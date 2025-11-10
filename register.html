@@ -18,37 +18,20 @@ body{ background:#f8f8f8; font-family:"Roboto", sans-serif; }
 .btn-primary-custom:hover{ background:#f45330; }
 a{ color:#f45330; font-weight:500; }
 
-/* SUCCESS MESSAGE */
-#successBox{
-   display:none; position:fixed; top:20px; right:20px;
-   background:#28a745; color:#fff; padding:15px 25px; border-radius:6px;
-   font-weight:600; box-shadow:0 4px 12px rgba(0,0,0,0.2); z-index:9999;
-   animation: fade 0.4s;
+#msgBox{
+   display:none; text-align:center; padding:10px; border-radius:6px;
+   margin-top:15px; font-weight:500; animation: fade .4s;
 }
 @keyframes fade{
-   from{opacity:0; transform:translateY(-10px);}
+   from{opacity:0; transform:translateY(-6px);}
    to{opacity:1; transform:translateY(0);}
 }
+
+.form-box{ opacity:0; transform:translateY(30px); transition:.8s; }
+.form-box.show{ opacity:1; transform:translateY(0); }
 </style>
-
-
-<style>
-.form-box {
-  opacity:0;
-  transform: translateY(30px);
-  transition: all .8s ease;
-}
-.form-box.show {
-  opacity:1;
-  transform: translateY(0);
-}
-</style>
-
 </head>
 <body>
-
-<!-- SUCCESS POPUP -->
-<div id="successBox">✅ Account Created! Redirecting...</div>
 
 <div class="form-box">
     <h3 class="text-center mb-4">Create Account</h3>
@@ -69,26 +52,39 @@ a{ color:#f45330; font-weight:500; }
             <input type="password" class="form-control" placeholder="Password">
         </div>
 
-        <button type="button" class="btn-primary-custom" onclick="registerSuccess()">Sign Up</button>
+        <button type="button" class="btn-primary-custom" onclick="registerUser()">Sign Up</button>
 
-        <p class="text-center mt-3">Already have an account? <a href="login.html">Login</a></p>
+        <p id="msgBox"></p>
+
+        <p class="text-center mt-3">Already have an account?
+            <a href="login.html">Login</a>
+        </p>
     </form>
 </div>
 
 <script>
-function registerSuccess(){
-   document.getElementById("successBox").style.display="block";
-   setTimeout(function(){
-      window.location.href="login.html";
-   }, 2000);
+function registerUser(){
+    let name = document.querySelectorAll("input")[0].value.trim();
+    let email = document.querySelectorAll("input")[1].value.trim();
+    let password = document.querySelectorAll("input")[2].value.trim();
+    let msg = document.getElementById("msgBox");
+
+    if(name === "" || email === "" || password === ""){
+        msg.style.display="block"; msg.style.background="#dc3545";
+        msg.innerText="All fields are required"; return;
+    }
+
+    localStorage.setItem("userEmail", email);
+    localStorage.setItem("userPass", password);
+    localStorage.setItem("userName", name);
+
+    msg.style.display="block"; msg.style.background="#28a745";
+    msg.innerText="Account Created Successfully! Redirecting...";
+
+    setTimeout(()=>{ window.location.href="login.html"; },2000);
 }
-</script>
 
-
-<script>
-window.addEventListener('load', function(){
-  document.querySelector('.form-box').classList.add('show');
-});
+window.addEventListener('load',()=>{ document.querySelector('.form-box').classList.add('show');});
 </script>
 
 </body>
