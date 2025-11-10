@@ -106,3 +106,21 @@
 
 
 })(jQuery);
+
+
+
+document.getElementById("form").addEventListener("submit", function(e){
+    e.preventDefault(); // stop page refresh
+
+    let name = document.querySelector('input[name="name"]').value.trim();
+    let email = document.querySelector('input[name="email"]').value.trim();
+    let errorMsg = document.getElementById("error-msg");
+
+    if(name === "" || email === "") {
+        errorMsg.style.display = "block"; // show error
+    } else {
+        errorMsg.style.display = "none"; // hide error
+        window.location.href = "404.html"; // redirect page
+    }
+});
+

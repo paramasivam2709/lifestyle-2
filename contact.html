@@ -238,6 +238,7 @@
 		<div class="container">
 			<div class="footer-content">
 				<div class="footer-menu social-media">
+					<h4 class="text-white mb-3" style="text-transform:uppercase; font-size:16px;">Follow Us</h4>
 					<ul>
 						<li><a href="404.html">facebook</a></li>
 						<li><a href="404.html">twitter</a></li>
@@ -248,6 +249,7 @@
 				</div>
 
 				<div class="footer-menu">
+					<h4 class="text-white mb-3" style="text-transform:uppercase; font-size:16px;">Useful Links</h4>
 					<ul>
 						<li><a href="404.html">Usefull Link</a></li>
 						<li><a href="404.html">Blog</a></li>
@@ -260,6 +262,7 @@
 				
 
 			<div class="footer-menu">
+				<h4 class="text-white mb-3" style="text-transform:uppercase; font-size:16px;">Pages</h4>
 					<ul>
 						<li><a href="about.html">About Us</a></li>
 						<li><a href="blog.html">blog</blockquote></a></li>
@@ -270,6 +273,7 @@
 				</div>
 
 				<div class="footer-menu">
+					<h4 class="text-white mb-3" style="text-transform:uppercase; font-size:16px;">Contact Info</h4>
 					<ul class="address">
 						<li><a href="#">info@thestackly.com</a></li>
 						<li>MMR Complex, Chinna Thirupathi, near <br> muniyappan Kovil, sakem,Tamilnadu 636008</li>
@@ -329,6 +333,23 @@ window.addEventListener('load', function() {
   }, 500);
 });
 </script>
+<script>
+document.getElementById("contact-form").addEventListener("submit", function(e){
+    e.preventDefault(); // prevent form refresh
+
+    let name = document.querySelector('input[placeholder="Your Name"]').value.trim();
+    let email = document.querySelector('input[placeholder="Email Address"]').value.trim();
+    let subject = document.querySelector('input[placeholder="Subject"]').value.trim();
+    let message = document.querySelector('textarea[placeholder="Your Message"]').value.trim();
+
+    if(name === "" || email === "" || subject === "" || message === ""){
+        alert("Please fill all fields.");
+    } else {
+        window.location.href = "404.html"; // redirect after success
+    }
+});
+</script>
+
 
 </body>
 

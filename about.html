@@ -204,7 +204,10 @@
 							<form id="form">
 								<input type="text" name="name" placeholder="Name">
 								<input type="text" name="email" placeholder="Email Address">
-								<button id="button"> <a href="404.html">Send me the link </a></button>
+								<button type="submit" id="button" class="btn-orange btn-pill">Send me the link</button>
+                                <p id="error-msg" style="color:red; margin-top:10px; display:none;">
+                           Please enter Name and Email.
+                          </p>
 							</form>
 						</div><!--text-block-->
 					</div>
@@ -221,6 +224,7 @@
 		<div class="container">
 			<div class="footer-content">
 				<div class="footer-menu social-media">
+					<h4 class="text-white mb-3" style="text-transform:uppercase; font-size:16px;">Follow Us</h4>
 					<ul>
 						<li><a href="404.html">facebook</a></li>
 						<li><a href="404.html">twitter</a></li>
@@ -231,6 +235,7 @@
 				</div>
 
 				<div class="footer-menu">
+					<h4 class="text-white mb-3" style="text-transform:uppercase; font-size:16px;">Useful Links</h4>
 					<ul>
 						<li><a href="404.html">Usefull Link</a></li>
 						<li><a href="404.html">Blog</a></li>
@@ -243,6 +248,7 @@
 				
 
 			<div class="footer-menu">
+				<h4 class="text-white mb-3" style="text-transform:uppercase; font-size:16px;">Pages</h4>
 					<ul>
 						<li><a href="about.html">About Us</a></li>
 						<li><a href="blog.html">blog</blockquote></a></li>
@@ -253,6 +259,7 @@
 				</div>
 
 				<div class="footer-menu">
+					<h4 class="text-white mb-3" style="text-transform:uppercase; font-size:16px;">Contact Us</h4>
 					<ul class="address">
 						<li><a href="#">info@thestackly.com</a></li>
 						<li>MMR Complex, Chinna Thirupathi, near <br> muniyappan Kovil, sakem,Tamilnadu 636008</li>
@@ -311,6 +318,23 @@ window.addEventListener('load', function() {
     document.getElementById('page-loader').classList.add('hide');
   }, 500);
 });
+</script>
+<script>
+	document.getElementById("form").addEventListener("submit", function(e){
+    e.preventDefault(); // stop page refresh
+
+    let name = document.querySelector('input[name="name"]').value.trim();
+    let email = document.querySelector('input[name="email"]').value.trim();
+    let errorMsg = document.getElementById("error-msg");
+
+    if(name === "" || email === "") {
+        errorMsg.style.display = "block"; // show error
+    } else {
+        errorMsg.style.display = "none"; // hide error
+        window.location.href = "404.html"; // redirect page
+    }
+});
+
 </script>
 
 </body>
