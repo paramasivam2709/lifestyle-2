@@ -1399,3 +1399,29 @@ faqs section style start
     margin-top: 6px;
   }
 }
+
+
+.nav-item.dropdown .dropdown-toggle {
+  padding-left: 5px;
+  cursor: pointer;
+}
+.nav-item.dropdown .dropdown-toggle::after {
+  margin-left: 6px;
+}
+/* Keep arrow and Home inline */
+.nav-item.dropdown {
+  display: flex;
+  align-items: center;
+}
+
+/* Remove extra weird spacing from arrow */
+.nav-item .dropdown-toggle {
+  padding-left: 4px !important;
+  margin-left: -4px !important;
+}
+
+/* Make arrow look neat */
+.nav-item .dropdown-toggle::after {
+  vertical-align: middle;
+  margin-left: 6px;
+}
