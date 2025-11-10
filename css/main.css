@@ -1356,3 +1356,46 @@ faqs section style start
 .chocolat-wrapper {
   z-index: 9999;
 }
+
+/* Fix dropdown not visible under banner */
+#header-nav,
+.navbar,
+.offcanvas,
+.dropdown-menu {
+  z-index: 9999 !important;
+}
+
+/* Ensure parent does not clip/dropdown */
+#header-nav, .header-nav, .navbar {
+  position: relative !important;
+  overflow: visible !important;
+}
+
+/* Make dropdown background clean */
+.dropdown-menu {
+  background: #fff;
+  border-radius: 6px;
+  border: 1px solid #ddd;
+}
+#summary-wrapper {
+  overflow: visible !important;
+}
+
+
+/* Fix dropdown inside mobile offcanvas so submenu pushes content instead of overlapping */
+@media (max-width: 991px) {
+  .offcanvas .dropdown-menu {
+    position: static !important;
+    width: 100%;
+    margin-top: 0.5rem;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+    border-radius: 6px;
+    background: #fff;
+  }
+
+  /* make the caret sit to the right in the mobile menu */
+  .offcanvas .nav-menu .dropdown-toggle::after {
+    float: right;
+    margin-top: 6px;
+  }
+}
